@@ -1,0 +1,23 @@
+.timer {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    margin-bottom: 50px;
+    padding: 0;
+
+    font-family: "Oswald", "Arial", sans-serif;
+    font-size: 90px;
+    text-align: center;
+}
+
+@media (min-width: $tablet-width) {
+    .timer {
+        font-size: 120px;
+    }
+}
+
+@media (min-width: $desktop-width) {
+    .timer {
+        font-size: 200px;
+    }
+}

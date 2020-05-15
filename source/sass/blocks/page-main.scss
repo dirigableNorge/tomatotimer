@@ -1,0 +1,57 @@
+.page-main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-main__control-timer-button {
+    margin-bottom: 50px;
+
+    &:hover,
+    &:focus {
+        opacity: 0.7;
+    }
+
+    &:active {
+        opacity: 0.3;
+    }
+
+    cursor: pointer;
+}
+
+.page-main__control-timer-button--play {
+    .page-main__control-timer-button-pause-icon {
+        display: none;
+    }
+}
+
+.page-main__control-timer-button--pause {
+    .page-main__control-timer-button-play-icon {
+        display: none;
+    }
+}
+
+.page-main__control-timer-button svg {
+    fill: white;
+}
+
+.page-main__skip-step-button {
+    &:hover,
+    &:focus {
+        color: rgba(white, 0.7)
+    }
+
+    &:active {
+        color: rgba(white, 0.3);
+    }
+
+    cursor: pointer;
+}
+
+@media (min-width: $desktop-width) {
+    .page-main {
+        max-width: 600px;
+    }
+}

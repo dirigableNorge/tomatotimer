@@ -1,0 +1,29 @@
+@import "fonts.scss";
+@import "variables.scss";
+@import "colours.scss";
+
+body {    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+    align-items: center;
+
+    height: 100vh;
+    margin: 0;
+
+    color: white;
+
+    background-color: $red1;
+}
+
+.modal-hide {
+    display: none;
+}
+
+@import "blocks/button.scss";
+@import "blocks/page-header.scss";
+@import "blocks/page-main.scss";
+@import "blocks/page-footer.scss";
+@import "blocks/timer.scss";
+@import "blocks/settings.scss";
+@import "blocks/counter.scss";
