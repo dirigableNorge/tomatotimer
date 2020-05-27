@@ -87,8 +87,8 @@ gulp.task('scripts', () => {
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(rollup({}, 'iife'))
-    .pipe(sourcemaps.write(''))
     .pipe(rename({suffix: '.min'}))
+    .pipe(sourcemaps.write(''))
     .pipe(gulp.dest('build/js'));
 })
 
@@ -156,7 +156,7 @@ gulp.task("server", function () {
   gulp.watch("source/js/*.js", gulp.series("scripts", "refresh"));
 });
 
-gulp.task("build", gulp.series("clean", "copy", "css", 'html', "jsmin"));
+gulp.task("build", gulp.series("clean", "copy", "css", 'html', "scripts"));
 gulp.task("start", gulp.series("build", "server"));
 
 

@@ -1,3 +1,5 @@
+import Settings from './settings.js';
+
 const STEP_TIME = 25 * 60;
 const BREAK_TIME = 5 * 60;
 
@@ -29,7 +31,7 @@ const tickTimer = () => {
         }
     } else {
         rewriteTimerElement(stepsSeconds);
-    }    
+    }
 };
 
 const startTimer = () => {
@@ -102,7 +104,7 @@ const settingsCloseButton = settingsElement.querySelector('.settings__close-butt
 const settingsOpenButton = document.querySelector('.page-header__settings-open-button');
 
 const openSettings = () => {
-    settingsElement.classList.remove('modal-hide');    
+    settingsElement.classList.remove('modal-hide');
     settingsCloseButton.addEventListener('click', closeSettings);
 }
 
@@ -126,9 +128,7 @@ const skipButtonHandler = () => {
 const skipButton = document.querySelector('.page-main__skip-step-button');
 skipButton.addEventListener('click', skipButtonHandler);
 
-const Settings = {};
-
-Settings.init = () => {
+const settingsFormInit = () => {
     const settingsForm = document.getElementById('settingsForm');
     const stepTimeInput = document.getElementById('stepTime');
     const breakTimeInput = document.getElementById('breakTime');
@@ -148,8 +148,7 @@ Settings.init = () => {
     notificationCheckbox.addEventListener('change', Settings.save);
 };
 
-Settings.save = () => {
-    
-};
+settingsFormInit();
 
-Settings.init();
+const settings = new Settings();
+settings.load();

@@ -1,11 +1,8 @@
 {
-  "name": "pomidoro",
+  "name": "tomatotimer",
   "version": "1.0.0",
   "description": "tomato method timer",
   "main": "gulpfile.js",
-  "scripts": {
-    "test": "test"
-  },
   "author": "",
   "license": "ISC",
   "devDependencies": {

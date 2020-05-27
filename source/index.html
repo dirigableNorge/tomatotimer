@@ -12,7 +12,7 @@
     <header class="page-header">
         <button class="button page-header__settings-open-button">Settings</button>
     </header>
-    <main class="page-main">        
+    <main class="page-main">
         <p class="timer"><span class="timer__minutes">25</span><span>:</span><span class="timer__seconds">00</span></p>
         <button class="button button--clear page-main__control-timer-button page-main__control-timer-button--play">
             <svg class="play-icon page-main__control-timer-button-play-icon" width="100px" height="100px" viewBox="0 0 60 60">
@@ -23,8 +23,8 @@
             </svg>
         </button>
         <button class="button page-main__skip-step-button">Skip step</button>
-        
-        <section class="settings modal-hide">
+
+        <section class="settings modal-hide" id="settingsModal">
             <form action="" class="settings__form" id="settingsForm">
                 <div class="settings__form-fieldset">
                     <label for="stepTime" class="settings__label">Step time</label>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="settings__form-fieldset">
                     <label for="soundNotification" class="settings__label">Sound notification</label>
-                    <input type="checkbox" name="soundNotification" id="soundNotification">                    
+                    <input type="checkbox" name="soundNotification" id="soundNotification">
                 </div>
                 <div class="settings__form-fieldset">
                     <label for="soundTick" class="settings__label">Sound tick</label>
@@ -59,7 +59,7 @@
     <footer class="page-footer">
         <p class="counter page-footer__counter"><span class="counter__number">0</span> tomato of <span class="counter__numbers">8</span></p>
     </footer>
-    
+
     <script src="js/main.min.js"></script>
 </body>
 </html>
