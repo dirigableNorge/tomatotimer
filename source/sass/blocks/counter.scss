@@ -1,3 +1,12 @@
 .counter {
-    font-size: 16px;
+  width: 80px;
+  height: 80px;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 80px;
+  text-align: center;
+
+  background-image: url("../img/counter.svg");
+  background-repeat: no-repeat;
+  background-position: center;
 }

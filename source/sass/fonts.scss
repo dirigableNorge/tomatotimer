@@ -1,17 +1,26 @@
 @font-face {
-    font-style: normal;
-    font-weight: 400;
-    font-family: "Oswald";
-  
-    font-display: swap;
-    src: url("../fonts/oswald-v31-latin-regular.woff2"), url("../fonts/oswald-v31-latin-regular.woff");
-  }
+  font-style: normal;
+  font-weight:200;
+  font-family: "Ruberoid";
 
-  @font-face {
-    font-style: normal;
-    font-weight: 700;
-    font-family: "Oswald";
-  
-    font-display: swap;
-    src: url("../fonts/oswald-v31-latin-700.woff2"), url("../fonts/oswald-v31-latin-700.woff");
-  }
+  font-display: swap;
+  src: url("../fonts/Ruberoid-UltraLight.woff2"), url("../fonts/Ruberoid-UltraLight.woff");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight:500;
+  font-family: "Ruberoid";
+
+  font-display: swap;
+  src: url("../fonts/Ruberoid-Medium.woff2"), url("../fonts/Ruberoid-Medium.woff");
+}
+
+@font-face {
+  font-style: normal;
+  font-weight:700;
+  font-family: "Ruberoid";
+
+  font-display: swap;
+  src: url("../fonts/Ruberoid-Bold.woff2"), url("../fonts/Ruberoid-Bold.woff");
+}

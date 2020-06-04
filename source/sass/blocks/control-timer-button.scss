@@ -1,0 +1,35 @@
+.control-timer-button {
+  width: 232px;
+  height: 232px;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+  background-color: transparent;
+  background-size: cover;
+  border: none;
+
+  &:active {
+    opacity: 0.75;
+  }
+
+  cursor: pointer;
+}
+
+.control-timer-button--play {
+  background-image: url("../img/icon-play.svg");
+
+  &:hover,
+  &:focus {
+    background-image: url("../img/icon-play-hover.svg");
+  }
+}
+
+.control-timer-buttom--pause {
+  background-image: url("../img/icon-pause.svg");
+
+  &:hover,
+  &:focus {
+    background-image: url("../img/icon-pause-hover.svg");
+  }
+}

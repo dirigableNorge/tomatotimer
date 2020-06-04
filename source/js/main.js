@@ -1,4 +1,9 @@
 import Settings from './settings.js';
+import Counter from './counter.js';
+import Timer from './timer.js';
+
+const counterElement = new Counter(document.querySelector('.counter'), 0);
+const timerElement = new Timer(document.querySelector('.timer'));
 
 const STEP_TIME = 25 * 60;
 const BREAK_TIME = 5 * 60;
@@ -9,14 +14,6 @@ let counterStepsNumber = 0;
 let counterStepsNumbers = 8;
 
 let timerIntervalCursor;
-
-const timerElement = document.querySelector('.timer');
-const timerMinutesElement = timerElement.querySelector('.timer__minutes');
-const timerSecondsElement = timerElement.querySelector('.timer__seconds');
-
-const counterElement = document.querySelector('.counter');
-const counterNumberElement = counterElement.querySelector('.counter__number');
-const counterNumbersElement = counterElement.querySelector('.counter__numbers');
 
 const timerControlButton = document.querySelector('.page-main__control-timer-button');
 
@@ -56,7 +53,7 @@ const onEndBreak = () => {
     stepsSeconds = STEP_TIME;
     startTimer();
     counterStepsNumber++;
-    rewriteCounterNumberElement();
+    counterElement.set(counterStepsNumber);
 };
 
 const rewriteTimerElement = (countTime) => {
@@ -71,12 +68,7 @@ const rewriteTimerElement = (countTime) => {
         minutes = "0" + minutes;
     }
 
-    timerMinutesElement.textContent = minutes;
-    timerSecondsElement.textContent = seconds;
-};
-
-const rewriteCounterNumberElement = () => {
-    counterNumberElement.textContent = counterStepsNumber;
+    timerElement.set(minutes, seconds);
 };
 
 const timerControlButtonClickHandler = () => {

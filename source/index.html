@@ -5,60 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pomidoro</title>
     <link rel="stylesheet" href="css/style.min.css"></link>
-    <link rel="preload" href="fonts/oswald-v31-latin-700.woff2" as="font" type="font/woff2">
-    <link rel="preload" href="fonts/oswald-v31-latin-regular.woff2" as="font" type="font/woff2">
+    <link rel="preload" href="fonts/Ruberoid-Bold.woff2" as="font" type="font/woff2">
+    <link rel="preload" href="fonts/Ruberoid-Medium.woff2" as="font" type="font/woff2">
+    <link rel="preload" href="fonts/Ruberoid-UltraLight.woff2" as="font" type="font/woff2">
 </head>
 <body>
-    <header class="page-header">
-        <button class="button page-header__settings-open-button">Settings</button>
-    </header>
     <main class="page-main">
-        <p class="timer"><span class="timer__minutes">25</span><span>:</span><span class="timer__seconds">00</span></p>
-        <button class="button button--clear page-main__control-timer-button page-main__control-timer-button--play">
-            <svg class="play-icon page-main__control-timer-button-play-icon" width="100px" height="100px" viewBox="0 0 60 60">
-                <path d="M30,0C13.458,0,0,13.458,0,30s13.458,30,30,30s30-13.458,30-30S46.542,0,30,0z M45.563,30.826l-22,15  C23.394,45.941,23.197,46,23,46c-0.16,0-0.321-0.038-0.467-0.116C22.205,45.711,22,45.371,22,45V15c0-0.371,0.205-0.711,0.533-0.884  c0.328-0.174,0.724-0.15,1.031,0.058l22,15C45.836,29.36,46,29.669,46,30S45.836,30.64,45.563,30.826z"/>
-            </svg>
-            <svg class="pause-icon page-main__control-timer-button-pause-icon" width="100px" height="100px" viewBox="0 0 510 510">
-                <path d="M256,0C114.617,0,0,114.615,0,256s114.617,256,256,256s256-114.615,256-256S397.383,0,256,0z M224,320  c0,8.836-7.164,16-16,16h-32c-8.836,0-16-7.164-16-16V192c0-8.836,7.164-16,16-16h32c8.836,0,16,7.164,16,16V320z M352,320  c0,8.836-7.164,16-16,16h-32c-8.836,0-16-7.164-16-16V192c0-8.836,7.164-16,16-16h32c8.836,0,16,7.164,16,16V320z"/>
-            </svg>
-        </button>
-        <button class="button page-main__skip-step-button">Skip step</button>
-
-        <section class="settings modal-hide" id="settingsModal">
-            <form action="" class="settings__form" id="settingsForm">
-                <div class="settings__form-fieldset">
-                    <label for="stepTime" class="settings__label">Step time</label>
-                    <input class="settings__number-input" id="stepTime" type="number" value="25"/>
-                    <label for="breakTime" class="settings__label">Break time</label>
-                    <input class="settings__number-input" id="breakTime" type="number" value="5"/>
-                    <label for="bigBreakTime" class="settings__label">Big break time</label>
-                    <input class="settings__number-input" id="bigBreakTime" type="number" value="20"/>
-                </div>
-                <div class="settings__form-fieldset">
-                    <label for="stepsRoundCount" class="settings__label">Steps round count</label>
-                    <input class="settings__number-input" id="stepsRoundCount" type="number" value="2">
-                    <label for="stepsDayCount" class="settings__label">Steps day count</label>
-                    <input class="settings__number-input" id="stepsDayCount" type="number" value="8">
-                </div>
-                <div class="settings__form-fieldset">
-                    <label for="soundNotification" class="settings__label">Sound notification</label>
-                    <input type="checkbox" name="soundNotification" id="soundNotification">
-                </div>
-                <div class="settings__form-fieldset">
-                    <label for="soundTick" class="settings__label">Sound tick</label>
-                    <input type="checkbox" name="soundTick" id="soundTick">
-                </div>
-                <div class="settings__form-fieldset">
-                    <label for="notification" class="settings__label">Notification</label>
-                    <input type="checkbox" name="notification" id="notification">
-                </div>
-            </form>
-            <button class="button settings__close-button">Close</button>
-        </section>
+      <h1 class="visually-hidden page-main__title">Tomato timer</h1>
+      <div class="languages">
+        <ul class="languages__list">
+          <li class="languages__item">
+            <button class="languages__button" disabled>UA</button>
+          </li>
+          <li class="languages__item">
+            <button class="languages__button">ENG</button>
+          </li>
+        </ul>
+      </div>
+      <p class="timer page-main__timer"></p>
+      <p class="counter page-main__counter">0</p>
+      <div class="page-main__controls-set">
+        <button class="control-timer-button control-timer-button--play" id="playPauseButton">Play pause button</button>
+        <button class="skip-step-button" id="skipStepButton">Skip step</button>
+        <button class="settings-button" id="settingsButton">Settings</button>
+      </div>
+      <article class="settings modal-hide" id="settingsModal">
+          <form action="" class="settings__form" id="settingsForm">
+            <div class="settings__form-fieldset">
+                <label for="stepTime" class="settings__label">Step time</label>
+                <input class="settings__number-input" id="stepTime" type="number" value="25"/>
+                <label for="breakTime" class="settings__label">Break time</label>
+                <input class="settings__number-input" id="breakTime" type="number" value="5"/>
+                <label for="bigBreakTime" class="settings__label">Big break time</label>
+                <input class="settings__number-input" id="bigBreakTime" type="number" value="20"/>
+            </div>
+            <div class="settings__form-fieldset">
+                <label for="stepsRoundCount" class="settings__label">Steps round count</label>
+                <input class="settings__number-input" id="stepsRoundCount" type="number" value="2">
+                <label for="stepsDayCount" class="settings__label">Steps day count</label>
+                <input class="settings__number-input" id="stepsDayCount" type="number" value="8">
+            </div>
+            <div class="settings__form-fieldset">
+                <label for="soundNotification" class="settings__label">Sound notification</label>
+                <input type="checkbox" name="soundNotification" id="soundNotification">
+            </div>
+            <div class="settings__form-fieldset">
+                <label for="soundTick" class="settings__label">Sound tick</label>
+                <input type="checkbox" name="soundTick" id="soundTick">
+            </div>
+            <div class="settings__form-fieldset">
+                <label for="notification" class="settings__label">Notification</label>
+                <input type="checkbox" name="notification" id="notification">
+            </div>
+          </form>
+          <button class="button settings__close-button">Close</button>
+      </article>
     </main>
-    <footer class="page-footer">
-        <p class="counter page-footer__counter"><span class="counter__number">0</span> tomato of <span class="counter__numbers">8</span></p>
-    </footer>
 
     <script src="js/main.min.js"></script>
 </body>

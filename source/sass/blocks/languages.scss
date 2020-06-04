@@ -1,0 +1,49 @@
+.languages {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.languages__list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.languages__item:not(:last-child) {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 29px;
+    background-color: white;
+  }
+}
+
+.languages__button {
+  margin: 0;
+  padding: 0 20px;
+  font-family: "Ruberoid", "Arial", sans-serif;
+  font-weight: 200;
+  font-size: 14px;
+  line-height: 29px;
+  color: white;
+  background-color: transparent;
+  border: 0;
+
+  &:hover:not(:disabled),
+  &:focus:not(:disabled) {
+    font-weight: 500;
+  }
+
+  cursor: pointer;
+}
+
+.languages__button:disabled {
+  font-weight: 500;
+  cursor: initial;
+}

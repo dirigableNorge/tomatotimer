@@ -56,17 +56,10 @@ gulp.task("images", function() {
     .pipe(
       imagemin([
         imagemin.optipng({ optimizationLevel: 3 }),
-        imagemin.jpegtran({ progressive: true }),
+        imagemin.mozjpeg({ progressive: true }),
         imagemin.svgo()
       ])
     )
-    .pipe(gulp.dest("build/img"));
-});
-
-gulp.task("webp", function() {
-  return gulp
-    .src("source/img/**/*.{png,jpg}")
-    .pipe(webp({ quality: 90 }))
     .pipe(gulp.dest("build/img"));
 });
 
@@ -156,7 +149,7 @@ gulp.task("server", function () {
   gulp.watch("source/js/*.js", gulp.series("scripts", "refresh"));
 });
 
-gulp.task("build", gulp.series("clean", "copy", "css", 'html', "scripts"));
+gulp.task("build", gulp.series("clean", "copy", "images", "css", 'html', "scripts"));
 gulp.task("start", gulp.series("build", "server"));
 
 

@@ -1,29 +1,21 @@
 @import "fonts.scss";
 @import "variables.scss";
 @import "colours.scss";
-
-body {    
-    display: flex;
-    flex-direction: column;
-    justify-content: center;    
-    align-items: center;
-
-    height: 100vh;
-    margin: 0;
-
-    color: white;
-
-    background-color: $red1;
-}
+@import "visually-hidden.scss";
+@import "general.scss";
 
 .modal-hide {
     display: none;
 }
 
+//blocks
+
 @import "blocks/button.scss";
-@import "blocks/page-header.scss";
 @import "blocks/page-main.scss";
-@import "blocks/page-footer.scss";
+@import "blocks/languages.scss";
 @import "blocks/timer.scss";
-@import "blocks/settings.scss";
 @import "blocks/counter.scss";
+@import "blocks/control-timer-button.scss";
+@import "blocks/skip-step-button.scss";
+@import "blocks/settings-button.scss";
+@import "blocks/settings.scss";
