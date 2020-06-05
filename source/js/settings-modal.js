@@ -1,26 +1,26 @@
+import Checkbox from './checkbox.js';
+import InputNumber from './input-number.js';
+
 export default class SettingsModal {
   constructor(DOMElement, settings) {
     this.element = DOMElement;
-    // this.stepMinutesInput = this.element.getElementById('stepTime');
-    // this.breakMinutesInput = this.element.getElementById('breakTime');
+
+    this.closeButton = this.element.querySelector('.settings__close-button');
+    this.closeButton.addEventListener('click', this.hide.bind(this));
+
+    this.form = this.element.querySelector('.settings__form');
+    this.form.addEventListener('change', this.change.bind(this));
+
+    this.stepMinutes = new InputNumber(document.getElementById('stepTime'))
+    this.breakMinutes = new InputNumber(document.getElementById('breakTime'));
+    this.bigBreakMinutes = new InputNumber(document.getElementById('bigBreakTime'));
+    this.stepsRoundCount = new InputNumber(document.getElementById('stepsRoundCount'));
+    this.stepsDayCount = new InputNumber(document.getElementById('stepsDayCount'));
+
+    this.soundNotification = new Checkbox(document.getElementById('soundNotification'));
+    this.soundTick = new Checkbox(document.getElementById('soundTick'));
+    this.notifictaion = new Checkbox(document.getElementById('notification'));
   }
-
-
-  // const breakTimeInput = document.getElementById('breakTime');
-  // const bigBreaktimeInput = document.getElementById('bigBreakTime');
-  // const stepsRoundCountImput = document.getElementById('stepsRoundCount');
-  // const stepsDayCountInput = document.getElementById('stepsDayCount');
-  // const soundNotificationCheckbox = document.getElementById('soundNotification');
-  // const soundTickCheckbox = document.getElementById('soundTick');
-  // const notificationCheckbox = document.getElementById('notification');
-  // stepTimeInput.addEventListener('change', Settings.save);
-  // breakTimeInput.addEventListener('change', Settings.save);
-  // bigBreaktimeInput.addEventListener('change', Settings.save);
-  // stepsRoundCountImput.addEventListener('change', Settings.save);
-  // stepsDayCountInput.addEventListener('change', Settings.save);
-  // soundNotificationCheckbox.addEventListener('change', Settings.save);
-  // soundTickCheckbox.addEventListener('change', Settings.save);
-  // notificationCheckbox.addEventListener('change', Settings.save);
 
   show() {
     this.element.classList.remove('modal-hide');
@@ -29,5 +29,9 @@ export default class SettingsModal {
 
   hide() {
     this.element.classList.add('modal-hide');
+  }
+
+  change(evt) {
+    console.log(evt.target);
   }
 };
