@@ -20,6 +20,8 @@ export default class Settings {
     } else {
       this.state = defaultSettings;
     }
+
+    this.updateListeners = [];
   }
 
   static isLocaleStorageEnabled() {
@@ -33,11 +35,54 @@ export default class Settings {
     }
   };
 
+  addEventListener(eventType, callback) {
+    if (eventType === 'update') {
+      this.updateListeners.push(callback);
+    }
+  }
+
   get() {
     return this.state;
   }
 
   set(settings) {
     localStorage.setItem('settings', JSON.stringify(settings));
+    this.state = settings;
+    this.updateListeners.forEach(callback => {
+      callback();
+    });
   };
+
+  get stepMinutes () {
+    return this.state.stepMinutes;
+  }
+
+  get breakMinutes () {
+    return this.state.breakMinutes;
+  }
+
+  get bigBreakMinutes () {
+    return this.state.bigBreakMinutes;
+  }
+
+  get stepsRoundCount () {
+    return this.state.stepsRoundCount;
+  }
+
+  get stepsDayCount () {
+    return this.state.stepsDayCount;
+  }
+
+  get soundNotification () {
+    return this.state.soundNotification;
+  }
+
+  get soundTick () {
+    return this.state.soundTick;
+  }
+
+  get notification () {
+    return this.state.notification;
+  }
+
 };

@@ -1,6 +1,7 @@
 export default class Checkbox {
-  constructor(DOMElement, value = false) {
+  constructor(DOMElement, value = false, onChangeHandler) {
     this.element = DOMElement;
+    this.element.addEventListener('change', onChangeHandler)
     value ? this.element.checked = true : this.element.checked = false;
   }
 

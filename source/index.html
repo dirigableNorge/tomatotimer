@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomidoro</title>
+    <title>Tomato timer</title>
     <link rel="stylesheet" href="css/style.min.css"></link>
     <link rel="preload" href="fonts/Ruberoid-Bold.woff2" as="font" type="font/woff2">
     <link rel="preload" href="fonts/Ruberoid-Medium.woff2" as="font" type="font/woff2">
@@ -23,6 +23,12 @@
         </ul>
       </div>
       <p class="timer page-main__timer"></p>
+      <audio id="tick">
+        <source src="audio/clock-tick.ogg" type="audio/ogg">
+      </audio>
+      <audio id="action">
+        <source src="audio/action.ogg" type="audio/ogg">
+      </audio>
       <p class="counter page-main__counter">0</p>
       <div class="page-main__controls-set">
         <button class="control-timer-button control-timer-button--play" id="playPauseButton">Play pause button</button>

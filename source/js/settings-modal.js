@@ -1,38 +1,23 @@
-import Settings from './settings';
 import Checkbox from './checkbox.js';
 import InputNumber from './input-number.js';
 
-const settingsLS = new Settings();
-
 export default class SettingsModal {
   constructor(DOMElement, settings) {
-    const { stepMinutes,
-            breakMinutes,
-            bigBreakMinutes,
-            stepsRoundCount,
-            stepsDayCount,
-            soundNotification,
-            soundTick,
-            notification
-          } = settings;
-
+    this.settings = settings;
     this.element = DOMElement;
 
     this.closeButton = this.element.querySelector('.settings__close-button');
     this.closeButton.addEventListener('click', this.hide.bind(this));
 
-    this.form = this.element.querySelector('.settings__form');
-    this.form.addEventListener('change', this.change);
+    this.stepMinutes = new InputNumber(document.getElementById('stepTime'), this.settings.stepMinutes, this.change.bind(this));
+    this.breakMinutes = new InputNumber(document.getElementById('breakTime'), this.settings.breakMinutes, this.change.bind(this));
+    this.bigBreakMinutes = new InputNumber(document.getElementById('bigBreakTime'), this.settings.bigBreakMinutes, this.change.bind(this));
+    this.stepsRoundCount = new InputNumber(document.getElementById('stepsRoundCount'), this.settings.stepsRoundCount, this.change.bind(this));
+    this.stepsDayCount = new InputNumber(document.getElementById('stepsDayCount'), this.settings.stepsDayCount, this.change.bind(this));
 
-    this.stepMinutes = new InputNumber(document.getElementById('stepTime'), stepMinutes, this.change.bind(this));
-    this.breakMinutes = new InputNumber(document.getElementById('breakTime'), breakMinutes, this.change.bind(this));
-    this.bigBreakMinutes = new InputNumber(document.getElementById('bigBreakTime'), bigBreakMinutes, this.change.bind(this));
-    this.stepsRoundCount = new InputNumber(document.getElementById('stepsRoundCount'), stepsRoundCount, this.change.bind(this));
-    this.stepsDayCount = new InputNumber(document.getElementById('stepsDayCount'), stepsDayCount, this.change.bind(this));
-
-    this.soundNotification = new Checkbox(document.getElementById('soundNotification'), soundNotification);
-    this.soundTick = new Checkbox(document.getElementById('soundTick'), soundTick);
-    this.notifictaion = new Checkbox(document.getElementById('notification'), notification);
+    this.soundNotification = new Checkbox(document.getElementById('soundNotification'), this.settings.soundNotification, this.change.bind(this));
+    this.soundTick = new Checkbox(document.getElementById('soundTick'), this.settings.soundTick, this.change.bind(this));
+    this.notifictaion = new Checkbox(document.getElementById('notification'), this.settings.notification, this.change.bind(this));
   }
 
   show() {
@@ -55,6 +40,6 @@ export default class SettingsModal {
       soundTick: this.soundTick.getValue(),
       notification: this.notifictaion.getValue(),
     }
-    settingsLS.set(newSettings);
+    this.settings.set(newSettings);
   }
 };

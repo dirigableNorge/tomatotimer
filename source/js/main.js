@@ -5,88 +5,58 @@ import SkipButton from './skip-button.js';
 import SettingsOpenButton from './settings-open-button.js';
 import Settings from './settings.js';
 import SettingsModal from './settings-modal.js';
+import SoundTrack from './sound-track.js';
 
-const settings = new Settings();
-const {stepMinutes, breakMinutes} = settings.get();
-
-const stepsSeconds = stepMinutes * 60;
-const breakSeconds = breakMinutes * 60;
-let currentSeconds = stepsSeconds;
-let currentStatus = "step";
-let timerTicking = false;
-let counterStepsNumber = 0;
-let timerIntervalCursor;
-
-const onEndStep = () => {
-    currentStatus = 'break';
-    currentSeconds = breakSeconds;
-    counterStepsNumber++;
-    counterElement.set(counterStepsNumber);
-    if (!timerTicking) {
-      timerElement.set(currentSeconds);
-    }
-};
-
-const onEndBreak = () => {
-  currentStatus = 'step';
-  currentSeconds = stepsSeconds;
-  if (!timerTicking) {
-    timerElement.set(currentSeconds);
-  }
-};
-
-const onEndBigBreak = () => {
-
+const updateSettings = () => {
+  timer.updateSettings(settings.soundTick);
 }
 
-const tickTimer = () => {
-  currentSeconds--;
-    if (currentSeconds === 0) {
-        switch (currentStatus) {
-            case 'step': onEndStep();
-            break;
-            case 'break': onEndBreak();
-            break;
-        }
+const soundTrack = new SoundTrack(document.getElementById('action'));
+
+const settings = new Settings();
+settings.addEventListener('update', updateSettings);
+
+let currentState = "step";
+let currentStep = 0;
+let stepsInRound = 0;
+
+const onEndTime = () => {
+  if (soundNotification) soundTrack.play();
+
+  if (currentState === 'step') {
+    currentStep++;
+    counter.set(currentStep);
+    if (stepsInRound === Number.parseInt(settings.stepsRoundCount)) {
+      stepsInRound = 0;
+      currentState = 'bigBreak';
+      timer.updateTime(settings.bigBreakSeconds);
     } else {
-      timerElement.set(currentSeconds);
+      stepsInRound++;
+      currentState = 'break';
+      timer.updateTime(settings.breakSeconds);
     }
-};
-
-const startTimer = () => {
-    timerIntervalCursor = setInterval(tickTimer, 1000);
-};
-
-const stopTimer = () => {
-    clearInterval(timerIntervalCursor);
-    timerIntervalCursor = null;
-};
+  } else {
+    currentState = 'step';
+    timer.updateTime(settings.stepSeconds);
+  }
+}
 
 const controlTimer = () => {
   playPauseButton.toggle();
-  timerIntervalCursor ? stopTimer() : startTimer();
-};
-
-const skipAction = () => {
-  console.log(currentStatus);
-  if (currentStatus === 'step') {
-    onEndStep();
+  if(timer.getTicking()) {
+    timer.stop();
   } else {
-    onEndBreak();
+    timer.start();
   }
 };
 
-// const onKeyDown = (evt) => {
-//     if (evt.key === ' ') {
-//         controlTimer();
-//     }
-// }
+const skipAction = () => {
+  onEndTime();
+};
 
-// document.addEventListener('keydown', onKeyDown);
-
-const counterElement = new Counter(document.querySelector('.counter'), 0);
-const timerElement = new Timer(document.querySelector('.timer'));
+const timer = new Timer(document.querySelector('.timer'), settings.stepSeconds, settings.soundTick, onEndTime);
+const counter = new Counter(document.querySelector('.counter'), currentStep);
 const playPauseButton = new PlayPauseButton(document.querySelector('.control-timer-button'), controlTimer);
 const skipButton = new SkipButton(document.querySelector('.skip-button'), skipAction);
-const settingsElement = new SettingsModal(document.querySelector('.settings'), settings.get());
+const settingsElement = new SettingsModal(document.querySelector('.settings'), settings);
 const settingsOpenButton = new SettingsOpenButton(document.querySelector('.settings-button'), settingsElement.show.bind(settingsElement));

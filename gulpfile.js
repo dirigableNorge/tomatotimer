@@ -120,6 +120,7 @@ gulp.task("copy", function() {
     .src(
       [
         "source/fonts/**/*.{woff,woff2}",
+        "source/audio/*.ogg",
         "source/*.ico"
       ],
       {
