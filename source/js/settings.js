@@ -11,6 +11,29 @@ export default class Settings {
       notification: false,
     };
 
+    this.lanugagePack = {
+      'ua': {
+        'stepMinutes': 'КРОК',
+        'breakMinutes': 'ПАУЗА',
+        'bigBreakMinutes': 'ВЕЛИКА ПАУЗА',
+        'stepsRoundCount': 'КРОКІВ ДО ВЕЛИКОЇ ПАУЗИ',
+        'stepsDayCount': 'КРОКІВ ЗАПЛАНОВАНО',
+        'soundNotification': 'ЗВУКОВЕ СПОВІЩЕННЯ',
+        'soundTick': 'ЗВУК ТАЙМЕРА',
+        'notification': 'СПОВІЩЕННЯ'
+      },
+      'eng': {
+        'stepMinutes': 'STEP TIME',
+        'breakMinutes': 'BREAK TIME',
+        'bigBreakMinutes': 'BIG BREAK TIME',
+        'stepsRoundCount': 'STEPS ROUND COUNT',
+        'stepsDayCount': 'STEPS DAY COUNT',
+        'soundNotification': 'SOUND NOTIFICATION',
+        'soundTick': 'SOUND TICK',
+        'notification': 'NOTIFICATION'
+      }
+    };
+
     if(Settings.isLocaleStorageEnabled()) {
       if (localStorage.getItem('settings') === null){
         localStorage.setItem('settings', JSON.stringify(defaultSettings));
