@@ -1,0 +1,15 @@
+.input-checkbox__input {
+  display: none;
+}
+
+.input-checkbox__input + .input-checkbox__icon {
+    width: 87px;
+    height: 26px;
+    background-image: url("../img/icon-radio-off.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.input-checkbox__input:checked + .input-checkbox__icon {
+    background-image: url("../img/icon-radio-on.svg");
+}

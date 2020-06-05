@@ -88,7 +88,7 @@ const counterElement = new Counter(document.querySelector('.counter'), 0);
 const timerElement = new Timer(document.querySelector('.timer'));
 const playPauseButton = new PlayPauseButton(document.querySelector('.control-timer-button'), controlTimer);
 const skipButton = new SkipButton(document.querySelector('.skip-button'), skipAction);
-const settingsElement = new SettingsModal(document.querySelector('.settings'));
+const settingsElement = new SettingsModal(document.querySelector('.settings'), settings.get());
 
 const openSettings = () => {
     settingsElement.show();
@@ -99,23 +99,3 @@ const closeSettings = () => {
 }
 
 const settingsOpenButton = new SettingsOpenButton(document.querySelector('.settings-button'), openSettings);
-
-const settingsFormInit = () => {
-    const settingsForm = document.getElementById('settingsForm');
-    const stepTimeInput = document.getElementById('stepTime');
-    const breakTimeInput = document.getElementById('breakTime');
-    const bigBreaktimeInput = document.getElementById('bigBreakTime');
-    const stepsRoundCountImput = document.getElementById('stepsRoundCount');
-    const stepsDayCountInput = document.getElementById('stepsDayCount');
-    const soundNotificationCheckbox = document.getElementById('soundNotification');
-    const soundTickCheckbox = document.getElementById('soundTick');
-    const notificationCheckbox = document.getElementById('notification');
-    stepTimeInput.addEventListener('change', Settings.save);
-    breakTimeInput.addEventListener('change', Settings.save);
-    bigBreaktimeInput.addEventListener('change', Settings.save);
-    stepsRoundCountImput.addEventListener('change', Settings.save);
-    stepsDayCountInput.addEventListener('change', Settings.save);
-    soundNotificationCheckbox.addEventListener('change', Settings.save);
-    soundTickCheckbox.addEventListener('change', Settings.save);
-    notificationCheckbox.addEventListener('change', Settings.save);
-};

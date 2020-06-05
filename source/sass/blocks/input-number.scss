@@ -1,0 +1,71 @@
+.input-number {
+  display: flex;
+  align-items: center;
+}
+
+.input-number__decrement-button,
+.input-number__increment-button {
+  width: 16px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+
+  font-size: 0;
+  line-height: 0;
+
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  &:active {
+    opacity: 0.75;
+  }
+}
+
+.input-number__decrement-button {
+  background-image: url("../img/icon-decrement.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover,
+  &:focus {
+    background-image: url("../img/icon-decrement-hover.svg");
+  }
+}
+
+.input-number__increment-button {
+  background-image: url("../img/icon-increment.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover,
+  &:focus {
+    background-image: url("../img/icon-increment-hover.svg");
+  }
+}
+
+.input-number__input {
+  max-width: 35px;
+  padding: 0 10px;
+
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 24px;
+  color: white;
+  text-align: center;
+
+  background-color: transparent;
+  border: 0;
+}
+
+.input-number__input[type="number"] {
+  -moz-appearance:textfield;/* stylelint-disable-line */
+}
+
+.input-number__input[type="number"]::-webkit-outer-spin-button,
+.input-number__input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;/* stylelint-disable-line */
+  margin: 0;
+}

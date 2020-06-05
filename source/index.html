@@ -30,35 +30,75 @@
         <button class="settings-button" id="settingsButton">Settings</button>
       </div>
       <article class="settings modal-hide" id="settingsModal">
+        <div class="settings__wrapper">
           <form action="" class="settings__form" id="settingsForm">
-            <div class="settings__form-fieldset">
-                <label for="stepTime" class="settings__label">Step time</label>
-                <input class="settings__number-input" id="stepTime" type="number" value="25"/>
-                <label for="breakTime" class="settings__label">Break time</label>
-                <input class="settings__number-input" id="breakTime" type="number" value="5"/>
-                <label for="bigBreakTime" class="settings__label">Big break time</label>
-                <input class="settings__number-input" id="bigBreakTime" type="number" value="20"/>
+
+            <div class="settings__field">
+              <label class="settings__label" for="stepTime">Step time</label>
+              <div class="input-number settings__input-number">
+                <button class="input-number__decrement-button" type="button">-</button>
+                <input class="input-number__input" id="stepTime" type="number" value="25"/>
+                <button class="input-number__increment-button" type="button">+</button>
+              </div>
             </div>
-            <div class="settings__form-fieldset">
-                <label for="stepsRoundCount" class="settings__label">Steps round count</label>
-                <input class="settings__number-input" id="stepsRoundCount" type="number" value="2">
-                <label for="stepsDayCount" class="settings__label">Steps day count</label>
-                <input class="settings__number-input" id="stepsDayCount" type="number" value="8">
+
+            <div class="settings__field">
+              <label class="settings__label" for="breakTime">Break time</label>
+              <div class="input-number settings__input-number">
+                <button class="input-number__decrement-button" type="button">-</button>
+                <input class="input-number__input" id="breakTime" type="number" value="5"/>
+                <button class="input-number__increment-button" type="button">+</button>
+              </div>
             </div>
-            <div class="settings__form-fieldset">
-                <label for="soundNotification" class="settings__label">Sound notification</label>
-                <input type="checkbox" name="soundNotification" id="soundNotification">
+
+            <div class="settings__field">
+              <label class="settings__label" for="bigBreakTime">Big break time</label>
+              <div class="input-number settings__input-number">
+                <button class="input-number__decrement-button" type="button">-</button>
+                <input class="input-number__input" id="bigBreakTime" type="number" value="20"/>
+                <button class="input-number__increment-button" type="button">+</button>
+              </div>
             </div>
-            <div class="settings__form-fieldset">
-                <label for="soundTick" class="settings__label">Sound tick</label>
-                <input type="checkbox" name="soundTick" id="soundTick">
+
+            <div class="settings__field">
+              <label class="settings__label" for="stepsRoundCount">Steps round count</label>
+              <div class="input-number settings__input-number">
+                <button class="input-number__decrement-button" type="button">-</button>
+                <input class="input-number__input" id="stepsRoundCount" type="number" value="2">
+                <button class="input-number__increment-button" type="button">+</button>
+              </div>
             </div>
-            <div class="settings__form-fieldset">
-                <label for="notification" class="settings__label">Notification</label>
-                <input type="checkbox" name="notification" id="notification">
+
+            <div class="settings__field">
+              <label class="settings__label" for="stepsDayCount">Steps day count</label>
+              <div class="input-number settings__input-number">
+                <button class="input-number__decrement-button" type="button">-</button>
+                <input class="input-number__input" id="stepsDayCount" type="number" value="8">
+                <button class="input-number__increment-button" type="button">+</button>
+              </div>
             </div>
+
+            <div class="settings__field input-checkbox">
+              <label class="settings__label input-checkbox__label" for="soundNotification">Sound notification</label>
+              <input class="input-checkbox__input" type="checkbox" name="soundNotification" id="soundNotification">
+              <div class="input-checkbox__icon"></div>
+            </div>
+
+            <div class="settings__field input-checkbox">
+              <label class="settings__label input-checkbox__label" for="soundTick">Sound tick</label>
+              <input class="input-checkbox__input" type="checkbox" name="soundTick" id="soundTick">
+              <div class="input-checkbox__icon"></div>
+            </div>
+
+            <div class="settings__field input-checkbox">
+              <label class="settings__label input-checkbox__label" for="notification">Notification</label>
+              <input class="input-checkbox__input" type="checkbox" name="notification" id="notification">
+              <div class="input-checkbox__icon"></div>
+            </div>
+
           </form>
-          <button class="button settings__close-button">Close</button>
+          <button class="settings__close-button" type="button">Close</button>
+        </div>
       </article>
     </main>
 
