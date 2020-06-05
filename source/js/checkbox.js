@@ -1,14 +1,14 @@
 export default class Checkbox {
   constructor(DOMElement, value = false) {
     this.element = DOMElement;
-    this.element.value = value;
+    value ? this.element.checked = true : this.element.checked = false;
   }
 
   getValue() {
-    return this.element.value;
+    return this.element.checked ? true : false;
   }
 
   setValue(value = false) {
-    this.element.value = value;
+    value ? this.element.checked = true : this.element.checked = false;
   }
 }

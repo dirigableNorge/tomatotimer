@@ -17,9 +17,9 @@ export default class Settings {
       }
       const LSSettings = localStorage.getItem('settings');
       this.state =  JSON.parse(LSSettings);
+    } else {
+      this.state = defaultSettings;
     }
-
-    this.state = defaultSettings;
   }
 
   static isLocaleStorageEnabled() {

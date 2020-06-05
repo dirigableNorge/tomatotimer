@@ -89,13 +89,4 @@ const timerElement = new Timer(document.querySelector('.timer'));
 const playPauseButton = new PlayPauseButton(document.querySelector('.control-timer-button'), controlTimer);
 const skipButton = new SkipButton(document.querySelector('.skip-button'), skipAction);
 const settingsElement = new SettingsModal(document.querySelector('.settings'), settings.get());
-
-const openSettings = () => {
-    settingsElement.show();
-}
-
-const closeSettings = () => {
-    settingsElement.hide();
-}
-
-const settingsOpenButton = new SettingsOpenButton(document.querySelector('.settings-button'), openSettings);
+const settingsOpenButton = new SettingsOpenButton(document.querySelector('.settings-button'), settingsElement.show.bind(settingsElement));
