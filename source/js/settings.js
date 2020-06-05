@@ -1,17 +1,26 @@
 export default class Settings {
   constructor() {
-    this.default = {
-      stepTime: 25,
-      breakTime: 5,
-      bigBreakTime: 20,
+    const defaultSettings = {
+      stepMinutes: 25,
+      breakMinutes: 5,
+      bigBreakMinutes: 20,
       stepsRoundCount: 2,
       stepsDayCount: 8,
       soundNotification: false,
-      soundTick: true,
+      soundTick: false,
       notification: false,
     };
-  }
 
+    if(Settings.isLocaleStorageEnabled()) {
+      if (localStorage.getItem('settings') === null){
+        localStorage.setItem('settings', JSON.stringify(defaultSettings));
+      }
+      const LSSettings = localStorage.getItem('settings');
+      this.state =  JSON.parse(LSSettings);
+    }
+
+    this.state = defaultSettings;
+  }
 
   static isLocaleStorageEnabled() {
     try {
@@ -24,18 +33,11 @@ export default class Settings {
     }
   };
 
-  load() {
-    if(Settings.isLocaleStorageEnabled()) {
-      if (localStorage.getItem('settings') === null){
-        localStorage.setItem('settings', JSON.stringify(this.default));
-      }
-      const LSSettings = localStorage.getItem('settings');
-      return JSON.parse(LSSettings);
-    }
-    return this.default;
-  };
+  get() {
+    return this.state;
+  }
 
-  save(settings) {
+  set(settings) {
     localStorage.setItem('settings', JSON.stringify(settings));
   };
 };

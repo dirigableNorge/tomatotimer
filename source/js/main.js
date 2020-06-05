@@ -1,33 +1,55 @@
-import Settings from './settings.js';
-import Counter from './counter.js';
 import Timer from './timer.js';
+import Counter from './counter.js';
+import PlayPauseButton from './play-pause-button.js';
+import SkipButton from './skip-button.js';
+import SettingsOpenButton from './settings-open-button.js';
+import Settings from './settings.js';
+import SettingsModal from './settings-modal.js';
 
-const counterElement = new Counter(document.querySelector('.counter'), 0);
-const timerElement = new Timer(document.querySelector('.timer'));
+const settings = new Settings();
+const {stepMinutes, breakMinutes} = settings.get();
 
-const STEP_TIME = 25 * 60;
-const BREAK_TIME = 5 * 60;
-
-let stepsSeconds = STEP_TIME;
-let timerStatus = "step";
+const stepsSeconds = stepMinutes * 60;
+const breakSeconds = breakMinutes * 60;
+let currentSeconds = stepsSeconds;
+let currentStatus = "step";
+let timerTicking = false;
 let counterStepsNumber = 0;
-let counterStepsNumbers = 8;
-
 let timerIntervalCursor;
 
-const timerControlButton = document.querySelector('.page-main__control-timer-button');
+const onEndStep = () => {
+    currentStatus = 'break';
+    currentSeconds = breakSeconds;
+    counterStepsNumber++;
+    counterElement.set(counterStepsNumber);
+    if (!timerTicking) {
+      timerElement.set(currentSeconds);
+    }
+};
+
+const onEndBreak = () => {
+  currentStatus = 'step';
+  currentSeconds = stepsSeconds;
+  if (!timerTicking) {
+    timerElement.set(currentSeconds);
+  }
+};
+
+const onEndBigBreak = () => {
+
+}
 
 const tickTimer = () => {
-    stepsSeconds--;
-    if (stepsSeconds === 0) {
-        switch (timerStatus) {
+  currentSeconds--;
+    if (currentSeconds === 0) {
+        switch (currentStatus) {
             case 'step': onEndStep();
-                break;
+            break;
             case 'break': onEndBreak();
-                break;
+            break;
         }
     } else {
-        rewriteTimerElement(stepsSeconds);
+      timerElement.set(currentSeconds);
     }
 };
 
@@ -40,85 +62,43 @@ const stopTimer = () => {
     timerIntervalCursor = null;
 };
 
-const onEndStep = () => {
-    stopTimer();
-    timerStatus = 'break';
-    stepsSeconds = BREAK_TIME;
-    startTimer();
+const controlTimer = () => {
+  playPauseButton.toggle();
+  timerIntervalCursor ? stopTimer() : startTimer();
 };
 
-const onEndBreak = () => {
-    stopTimer();
-    timerStatus = 'step';
-    stepsSeconds = STEP_TIME;
-    startTimer();
-    counterStepsNumber++;
-    counterElement.set(counterStepsNumber);
+const skipAction = () => {
+  console.log(currentStatus);
+  if (currentStatus === 'step') {
+    onEndStep();
+  } else {
+    onEndBreak();
+  }
 };
 
-const rewriteTimerElement = (countTime) => {
-    let minutes = Math.floor(countTime / 60);
-    let seconds = countTime % 60;
+// const onKeyDown = (evt) => {
+//     if (evt.key === ' ') {
+//         controlTimer();
+//     }
+// }
 
-    if (seconds < 10) {
-        seconds = "0" + seconds;
-    }
+// document.addEventListener('keydown', onKeyDown);
 
-    if (minutes < 10) {
-        minutes = "0" + minutes;
-    }
-
-    timerElement.set(minutes, seconds);
-};
-
-const timerControlButtonClickHandler = () => {
-    timerControlButton.classList.toggle('page-main__control-timer-button--play');
-    timerControlButton.classList.toggle('page-main__control-timer-button--pause');
-    if (timerIntervalCursor) {
-        stopTimer();
-    } else {
-        startTimer();
-    }
-};
-
-timerControlButton.addEventListener('click', timerControlButtonClickHandler);
-
-const onKeyDown = (evt) => {
-    if (evt.key === ' ') {
-        timerControlButtonClickHandler();
-    }
-}
-
-document.addEventListener('keydown', onKeyDown);
-
-const settingsElement = document.querySelector('.settings');
-const settingsCloseButton = settingsElement.querySelector('.settings__close-button');
-const settingsOpenButton = document.querySelector('.page-header__settings-open-button');
+const counterElement = new Counter(document.querySelector('.counter'), 0);
+const timerElement = new Timer(document.querySelector('.timer'));
+const playPauseButton = new PlayPauseButton(document.querySelector('.control-timer-button'), controlTimer);
+const skipButton = new SkipButton(document.querySelector('.skip-button'), skipAction);
+const settingsElement = new SettingsModal(document.querySelector('.settings'));
 
 const openSettings = () => {
-    settingsElement.classList.remove('modal-hide');
-    settingsCloseButton.addEventListener('click', closeSettings);
+    settingsElement.show();
 }
 
 const closeSettings = () => {
-    settingsElement.classList.add('modal-hide');
+    settingsElement.hide();
 }
 
-settingsOpenButton.addEventListener('click', openSettings);
-settingsCloseButton.addEventListener('click', closeSettings);
-
-const skipButtonHandler = () => {
-    if (timerStatus === 'step') {
-        onEndStep();
-        skipButton.textContent = 'Skip break';
-    } else {
-        onEndBreak();
-        skipButton.textContent = 'Skip step';
-    }
-}
-
-const skipButton = document.querySelector('.page-main__skip-step-button');
-skipButton.addEventListener('click', skipButtonHandler);
+const settingsOpenButton = new SettingsOpenButton(document.querySelector('.settings-button'), openSettings);
 
 const settingsFormInit = () => {
     const settingsForm = document.getElementById('settingsForm');
@@ -139,8 +119,3 @@ const settingsFormInit = () => {
     soundTickCheckbox.addEventListener('change', Settings.save);
     notificationCheckbox.addEventListener('change', Settings.save);
 };
-
-settingsFormInit();
-
-const settings = new Settings();
-settings.load();

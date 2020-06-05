@@ -4,7 +4,18 @@ export default class Timer {
     this.element.textContent = `${minutes}:${seconds}`;
   }
 
-  set(minutes, seconds) {
+  set(countTime) {
+    let minutes = Math.floor(countTime / 60);
+    let seconds = countTime % 60;
+
+    if (seconds < 10) {
+        seconds = "0" + seconds;
+    }
+
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+
     this.element.textContent = `${minutes}:${seconds}`;
   }
 };
