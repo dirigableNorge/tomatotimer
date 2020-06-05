@@ -11,8 +11,8 @@ export default class Settings {
       notification: false,
     };
 
-    this.lanugagePack = {
-      'ua': {
+    this.languagePack = {
+      ua: {
         'stepMinutes': 'КРОК',
         'breakMinutes': 'ПАУЗА',
         'bigBreakMinutes': 'ВЕЛИКА ПАУЗА',
@@ -22,7 +22,7 @@ export default class Settings {
         'soundTick': 'ЗВУК ТАЙМЕРА',
         'notification': 'СПОВІЩЕННЯ'
       },
-      'eng': {
+      eng: {
         'stepMinutes': 'STEP TIME',
         'breakMinutes': 'BREAK TIME',
         'bigBreakMinutes': 'BIG BREAK TIME',
@@ -33,6 +33,8 @@ export default class Settings {
         'notification': 'NOTIFICATION'
       }
     };
+
+    this.currentLanguage = 'ua';
 
     if(Settings.isLocaleStorageEnabled()) {
       if (localStorage.getItem('settings') === null){
@@ -69,7 +71,10 @@ export default class Settings {
   }
 
   set(settings) {
-    localStorage.setItem('settings', JSON.stringify(settings));
+    if(Settings.isLocaleStorageEnabled()) {
+      localStorage.setItem('settings', JSON.stringify(settings));
+    }
+
     this.state = settings;
     this.updateListeners.forEach(callback => {
       callback();
@@ -108,4 +113,15 @@ export default class Settings {
     return this.state.notification;
   }
 
+  set language (value = 'ua') {
+    this.currentLanguage = value;
+  }
+
+  get language () {
+    return this.currentLanguage;
+  }
+
+  getLanguagePack(language = 'ua') {
+    return this.languagePack[language];
+  }
 };

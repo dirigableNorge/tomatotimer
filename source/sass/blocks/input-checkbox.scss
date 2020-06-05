@@ -17,10 +17,23 @@
     background-position: center;
   }
 
+  &:hover {
+    &::after {
+      background-image: url("../img/icon-radio-off-hover.svg");
+    }
+  }
+
 }
 
 .input-checkbox__input:checked + .input-checkbox__label {
   &::after {
     background-image: url("../img/icon-radio-on.svg");
+  }
+
+  &:hover,
+  &:focus {
+    &::after {
+      background-image: url("../img/icon-radio-on-hover.svg");
+    }
   }
 }

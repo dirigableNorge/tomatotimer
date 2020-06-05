@@ -42,4 +42,8 @@ export default class SettingsModal {
     }
     this.settings.set(newSettings);
   }
+
+  changeLanguage(language) {
+    
+  }
 };
