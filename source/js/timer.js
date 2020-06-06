@@ -14,7 +14,6 @@ export default class Timer {
 
   tick() {
     if(this.soundTick) soundTrack.play();
-
     this.currentSeconds--;
     if (this.currentSeconds === 0) {
       this.onEnd();

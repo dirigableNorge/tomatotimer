@@ -1,5 +1,6 @@
 import Checkbox from './checkbox.js';
 import InputNumber from './input-number.js';
+import LanguagePanel from './language-panel.js';
 
 export default class SettingsModal {
   constructor(DOMElement, settings) {
@@ -8,6 +9,8 @@ export default class SettingsModal {
 
     this.closeButton = this.element.querySelector('.settings__close-button');
     this.closeButton.addEventListener('click', this.hide.bind(this));
+
+    this.languagePanel = new LanguagePanel(this.element.querySelector('.settings'), settings.currentLanguage, this.changeLanguage.bind(this));
 
     this.stepMinutes = new InputNumber(document.getElementById('stepTime'), this.settings.stepMinutes, this.change.bind(this));
     this.breakMinutes = new InputNumber(document.getElementById('breakTime'), this.settings.breakMinutes, this.change.bind(this));
@@ -18,6 +21,8 @@ export default class SettingsModal {
     this.soundNotification = new Checkbox(document.getElementById('soundNotification'), this.settings.soundNotification, this.change.bind(this));
     this.soundTick = new Checkbox(document.getElementById('soundTick'), this.settings.soundTick, this.change.bind(this));
     this.notifictaion = new Checkbox(document.getElementById('notification'), this.settings.notification, this.change.bind(this));
+
+    this.changeLanguage(this.settings.currentLanguage);
   }
 
   show() {
@@ -44,6 +49,15 @@ export default class SettingsModal {
   }
 
   changeLanguage(language) {
-    
+    const languagePack = this.settings.getLanguagePack(language);
+    document.getElementById('stepTimeLabel').textContent = languagePack.stepMinutes;
+    document.getElementById('breakTimeLabel').textContent = languagePack.breakMinutes;
+    document.getElementById('bigBreakTimeLabel').textContent = languagePack.bigBreakMinutes;
+    document.getElementById('stepsRoundCountLabel').textContent = languagePack.stepsRoundCount;
+    document.getElementById('stepsDayCountLabel').textContent = languagePack.stepsDayCount;
+    document.getElementById('soundNotificationLabel').textContent = languagePack.soundNotification;
+    document.getElementById('soundTickLabel').textContent = languagePack.soundTick;
+    document.getElementById('notificationLabel').textContent = languagePack.notification;
+    this.settings.currentLanguage = language;
   }
 };

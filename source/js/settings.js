@@ -113,14 +113,6 @@ export default class Settings {
     return this.state.notification;
   }
 
-  set language (value = 'ua') {
-    this.currentLanguage = value;
-  }
-
-  get language () {
-    return this.currentLanguage;
-  }
-
   getLanguagePack(language = 'ua') {
     return this.languagePack[language];
   }

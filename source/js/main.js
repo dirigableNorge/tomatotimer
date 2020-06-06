@@ -29,15 +29,15 @@ const onEndTime = () => {
     if (stepsInRound === Number.parseInt(settings.stepsRoundCount)) {
       stepsInRound = 0;
       currentState = 'bigBreak';
-      timer.updateTime(settings.bigBreakSeconds);
+      timer.updateTime(settings.bigBreakMinutes * 60);
     } else {
       stepsInRound++;
       currentState = 'break';
-      timer.updateTime(settings.breakSeconds);
+      timer.updateTime(settings.breakMinutes * 60);
     }
   } else {
     currentState = 'step';
-    timer.updateTime(settings.stepSeconds);
+    timer.updateTime(settings.stepMinutes * 60);
   }
 }
 
@@ -54,7 +54,7 @@ const skipAction = () => {
   onEndTime();
 };
 
-const timer = new Timer(document.querySelector('.timer'), settings.stepSeconds, settings.soundTick, onEndTime);
+const timer = new Timer(document.querySelector('.timer'), (settings.stepMinutes * 60), settings.soundTick, onEndTime);
 const counter = new Counter(document.querySelector('.counter'), currentStep);
 const playPauseButton = new PlayPauseButton(document.querySelector('.control-timer-button'), controlTimer);
 const skipButton = new SkipButton(document.querySelector('.skip-button'), skipAction);
