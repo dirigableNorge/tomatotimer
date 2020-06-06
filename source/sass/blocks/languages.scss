@@ -34,13 +34,6 @@
   color: white;
   background-color: transparent;
   border: 0;
-
-  &:hover:not(:disabled),
-  &:focus:not(:disabled) {
-    font-weight: 500;
-  }
-
-  cursor: pointer;
 }
 
 .languages__button:disabled {
@@ -48,10 +41,21 @@
   cursor: initial;
 }
 
-@media(min-width: $tablet-width) {
+@media (min-width: $tablet-width) {
   .languages {
     position: absolute;
     top: -60px;
     right: 30px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .languages__button {
+    &:hover:not(:disabled),
+    &:focus:not(:disabled) {
+      font-weight: 500;
+    }
+
+    cursor: pointer;
   }
 }

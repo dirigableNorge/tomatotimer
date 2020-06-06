@@ -11,34 +11,43 @@
   background-repeat: no-repeat;
   border: none;
 
-  &:active {
-    opacity: 0.75;
-  }
-
-  cursor: pointer;
 }
 
 .control-timer-button--play {
   background-image: url("../img/icon-play.svg");
-
-  &:hover,
-  &:focus {
-    background-image: url("../img/icon-play-hover.svg");
-  }
 }
 
 .control-timer-buttom--pause {
   background-image: url("../img/icon-pause.svg");
-
-  &:hover,
-  &:focus {
-    background-image: url("../img/icon-pause-hover.svg");
-  }
 }
 
 @media (min-width: $tablet-width) {
   .control-timer-button {
     width: 232px;
     height: 232px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .control-timer-button {
+    &:active {
+      opacity: 0.75;
+    }
+
+    cursor: pointer;
+  }
+
+  .control-timer-button--play {
+    &:hover,
+    &:focus {
+      background-image: url("../img/icon-play-hover.svg");
+    }
+  }
+
+  .control-timer-buttom--pause {
+    &:hover,
+    &:focus {
+      background-image: url("../img/icon-pause-hover.svg");
+    }
   }
 }

@@ -16,34 +16,18 @@
   background-color: transparent;
   background-size: cover;
   border: none;
-
-  cursor: pointer;
-
-  &:active {
-    opacity: 0.75;
-  }
 }
 
 .input-number__decrement-button {
   background-image: url("../img/icon-decrement.svg");
   background-repeat: no-repeat;
   background-position: center;
-
-  &:hover,
-  &:focus {
-    background-image: url("../img/icon-decrement-hover.svg");
-  }
 }
 
 .input-number__increment-button {
   background-image: url("../img/icon-increment.svg");
   background-repeat: no-repeat;
   background-position: center;
-
-  &:hover,
-  &:focus {
-    background-image: url("../img/icon-increment-hover.svg");
-  }
 }
 
 .input-number__input {
@@ -82,5 +66,30 @@
     font-size: 24px;
     line-height: 24px;
 
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .input-number__decrement-button,
+  .input-number__increment-button {
+    &:active {
+      opacity: 0.75;
+    }
+
+    cursor: pointer;
+  }
+
+  .input-number__decrement-button {
+    &:hover,
+    &:focus {
+      background-image: url("../img/icon-decrement-hover.svg");
+    }
+  }
+
+  .input-number__increment-button {
+    &:hover,
+    &:focus {
+      background-image: url("../img/icon-increment-hover.svg");
+    }
   }
 }

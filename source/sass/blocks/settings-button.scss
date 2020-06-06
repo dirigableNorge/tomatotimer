@@ -12,24 +12,27 @@
   background-image: url("../img/icon-settings.svg");
   background-size: cover;
   border: none;
-
-  &:hover,
-  &:focus {
-    background-image: url("../img/icon-settings-hover.svg");
-  }
-
-  &:active {
-    opacity: 0.75;
-  }
-
-  cursor: pointer;
 }
-
 
 @media (min-width: $tablet-width) {
   .settings-button {
     right: 0;
     width: 55px;
     height: 55px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .settings-button {
+    &:hover,
+    &:focus {
+      background-image: url("../img/icon-settings-hover.svg");
+    }
+
+    &:active {
+      opacity: 0.75;
+    }
+
+    cursor: pointer;
   }
 }
