@@ -33,19 +33,19 @@ export default class InputNumber {
     } else {
       this.input.value = evt.target.value;
     }
-  }
+  };
 
   decrementValue() {
     if(this.getValue() > 0) {
       this.setValue(this.getValue() - 1);
       this.onChangeHandler();
     }
-  }
+  };
 
   incrementValue() {
     if (this.getValue() < this.MAX_VALUE) {
       this.setValue(this.getValue() + 1);
       this.onChangeHandler();
     }
-  }
+  };
 }

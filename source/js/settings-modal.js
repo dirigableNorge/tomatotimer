@@ -10,7 +10,7 @@ export default class SettingsModal {
     this.closeButton = this.element.querySelector('.settings__close-button');
     this.closeButton.addEventListener('click', this.hide.bind(this));
 
-    this.languagePanel = new LanguagePanel(this.element.querySelector('.settings'), settings.currentLanguage, this.changeLanguage.bind(this));
+    this.languagePanel = new LanguagePanel(this.element.querySelector('.settings'), settings.language, this.changeLanguage.bind(this));
 
     this.stepMinutes = new InputNumber(document.getElementById('stepTime'), this.settings.stepMinutes, this.change.bind(this));
     this.breakMinutes = new InputNumber(document.getElementById('breakTime'), this.settings.breakMinutes, this.change.bind(this));
@@ -22,17 +22,16 @@ export default class SettingsModal {
     this.soundTick = new Checkbox(document.getElementById('soundTick'), this.settings.soundTick, this.change.bind(this));
     this.notifictaion = new Checkbox(document.getElementById('notification'), this.settings.notification, this.change.bind(this));
 
-    this.changeLanguage(this.settings.currentLanguage);
-  }
+    this.changeLanguage(this.settings.language);
+  };
 
   show() {
     this.element.classList.remove('modal-hide');
-
-  }
+  };
 
   hide() {
     this.element.classList.add('modal-hide');
-  }
+  };
 
   change(evt) {
     const newSettings = {
@@ -44,9 +43,10 @@ export default class SettingsModal {
       soundNotification: this.soundNotification.getValue(),
       soundTick: this.soundTick.getValue(),
       notification: this.notifictaion.getValue(),
-    }
+      language: this.languagePanel.getLanguage()
+    };
     this.settings.set(newSettings);
-  }
+  };
 
   changeLanguage(language) {
     const languagePack = this.settings.getLanguagePack(language);
@@ -58,6 +58,6 @@ export default class SettingsModal {
     document.getElementById('soundNotificationLabel').textContent = languagePack.soundNotification;
     document.getElementById('soundTickLabel').textContent = languagePack.soundTick;
     document.getElementById('notificationLabel').textContent = languagePack.notification;
-    this.settings.currentLanguage = language;
-  }
+    this.change();
+  };
 };

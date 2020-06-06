@@ -9,6 +9,7 @@ export default class Settings {
       soundNotification: false,
       soundTick: false,
       notification: false,
+      language: 'ua'
     };
 
     this.languagePack = {
@@ -34,18 +35,14 @@ export default class Settings {
       }
     };
 
-    this.currentLanguage = 'ua';
-
     if(Settings.isLocaleStorageEnabled()) {
       if (localStorage.getItem('settings') === null){
         localStorage.setItem('settings', JSON.stringify(defaultSettings));
       }
-      const LSSettings = localStorage.getItem('settings');
-      this.state =  JSON.parse(LSSettings);
+      this.state =  JSON.parse(localStorage.getItem('settings'));
     } else {
       this.state = defaultSettings;
     }
-
     this.updateListeners = [];
   }
 
@@ -70,7 +67,7 @@ export default class Settings {
     return this.state;
   }
 
-  set(settings) {
+  set(settings = this.state) {
     if(Settings.isLocaleStorageEnabled()) {
       localStorage.setItem('settings', JSON.stringify(settings));
     }
@@ -113,7 +110,11 @@ export default class Settings {
     return this.state.notification;
   }
 
-  getLanguagePack(language = 'ua') {
+  get language () {
+    return this.state.language;
+  }
+
+  getLanguagePack (language = 'ua') {
     return this.languagePack[language];
   }
 };

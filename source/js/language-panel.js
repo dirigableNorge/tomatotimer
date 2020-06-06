@@ -11,12 +11,18 @@ export default class LanguagePanel {
     } else {
       this.engButton.setAttribute('disabled', null);
     }
-  }
+    this.currentLanguage = language;
+  };
 
   changeLanguage(evt) {
     this.engButton.removeAttribute('disabled');
     this.uaButton.removeAttribute('disabled');
     evt.target.setAttribute('disabled', null);
-    this.onChangeLanguage(evt.target.textContent.toLowerCase());
-  }
+    this.currentLanguage = evt.target.textContent.toLowerCase()
+    this.onChangeLanguage(this.currentLanguage);
+  };
+
+  getLanguage() {
+    return this.currentLanguage;
+  };
 }
