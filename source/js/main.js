@@ -60,3 +60,7 @@ const playPauseButton = new PlayPauseButton(document.querySelector('.control-tim
 const skipButton = new SkipButton(document.querySelector('.skip-button'), skipAction);
 const settingsElement = new SettingsModal(document.querySelector('.settings'), settings);
 const settingsOpenButton = new SettingsOpenButton(document.querySelector('.settings-button'), settingsElement.show.bind(settingsElement));
+
+window.onload = () => {
+  playPauseButton.focus();
+}

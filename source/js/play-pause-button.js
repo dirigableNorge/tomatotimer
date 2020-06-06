@@ -18,4 +18,8 @@ export default class PlayPauseButton {
     this.button.classList.toggle('control-timer-button--play')
       this.button.classList.toggle('control-timer-buttom--pause');
   }
+
+  focus() {
+    this.button.focus(); 
+  }
 }
