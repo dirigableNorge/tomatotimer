@@ -4,13 +4,13 @@
 
 .input-checkbox__input + .input-checkbox__label {
   position: relative;
-  padding-right: 177px;
+  padding-right: 112px;
   &::after {
     content: "";
     position: absolute;
     top: -1px;
     right: 0;
-    width: 87px;
+    width: 72px;
     height: 26px;
     background-image: url("../img/icon-radio-off.svg");
     background-repeat: no-repeat;
@@ -35,5 +35,24 @@
     &::after {
       background-image: url("../img/icon-radio-on-hover.svg");
     }
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .input-checkbox__input + .input-checkbox__label {
+    position: relative;
+    padding-right: 177px;
+    &::after {
+      content: "";
+      position: absolute;
+      top: -1px;
+      right: 0;
+      width: 87px;
+      height: 26px;
+      background-image: url("../img/icon-radio-off.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
   }
 }

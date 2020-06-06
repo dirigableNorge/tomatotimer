@@ -4,19 +4,18 @@
   left: 0;
 
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background-color: $red1;
 }
 
 .settings__wrapper {
   position: relative;
-  margin: 95px auto;
-  padding-top: 100px;
+  padding-top: 65px;
 }
 
 .settings__form {
   position: relative;
-  width: 500px;
+  width: 320;
   height: 100%;
   margin: 0 auto;
   padding: 25px 0;
@@ -25,7 +24,7 @@
     content: "";
     position: absolute;
     top: 0;
-    left: 345px;
+    left: 185px;
     width: 2px;
     height: 100%;
     background-color: white;
@@ -35,25 +34,25 @@
 .settings__field {
   display: flex;
   &:not(:last-child){
-    margin-bottom: 52px;
+    margin-bottom: 32px;
   }
 }
 
 .settings__label {
-  width: 300px;
-  padding-right: 90px;
-  font-size: 24px;
-  line-height: 24px;
+  width: 160px;
+  padding-right: 50px;
+  font-size: 14px;
+  line-height: 14px;
   text-align: right;
 }
 
 .settings__close-button {
   position: absolute;
-  top: 0;
-  right: calc(50% - 298px);
+  bottom: -60px;
+  right: calc(50% - 10px);
 
-  width: 35px;
-  height: 35px;
+  width: 19px;
+  height: 19px;
 
   font-size: 0;
   line-height: 0;
@@ -61,25 +60,88 @@
   background-image: url("../img/icon-close.svg");
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
   border: none;
-
-  &:hover,
-  &:focus {
-    background-image: url("../img/icon-close-hover.svg");
-    background-size: contain;
-  }
-
-  &:active {
-    opacity: 0.75;
-  }
 
   cursor: pointer;
 }
 
 @media (min-width: $tablet-width) {
+  .settings {
+    position: absolute;
+    top: 0;
+    left: 0;
 
+    width: 100vw;
+    height: 100vh;
+    background-color: $red1;
+  }
+
+  .settings__wrapper {
+    position: relative;
+    margin: 95px auto;
+    padding-top: 100px;
+  }
+
+  .settings__form {
+    position: relative;
+    width: 500px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 25px 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 345px;
+      width: 2px;
+      height: 100%;
+      background-color: white;
+    }
+  }
+
+  .settings__field {
+    display: flex;
+    &:not(:last-child){
+      margin-bottom: 52px;
+    }
+  }
+
+  .settings__label {
+    width: 300px;
+    padding-right: 90px;
+    font-size: 24px;
+    line-height: 26px;
+    text-align: right;
+  }
+
+  .settings__close-button {
+    position: absolute;
+    bottom: -100px;
+    right: calc(50% - 15px);
+
+    width: 35px;
+    height: 35px;
+  }
 }
 
 @media (min-width: $desktop-width) {
+  .settings__close-button {
+    position: absolute;
+    top: 0;
+    right: calc(50% - 298px);
 
+    width: 35px;
+    height: 35px;
+
+    &:hover,
+    &:focus {
+      background-image: url("../img/icon-close-hover.svg");
+    }
+
+    &:active {
+      opacity: 0.75;
+    }
+  }
 }

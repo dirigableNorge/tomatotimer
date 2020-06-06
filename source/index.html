@@ -12,16 +12,7 @@
 <body>
     <main class="page-main">
       <h1 class="visually-hidden page-main__title">Tomato timer</h1>
-      <div class="languages">
-        <ul class="languages__list">
-          <li class="languages__item">
-            <button class="languages__button" disabled>UA</button>
-          </li>
-          <li class="languages__item">
-            <button class="languages__button">ENG</button>
-          </li>
-        </ul>
-      </div>
+
       <p class="timer page-main__timer"></p>
       <audio id="tick">
         <source src="audio/clock-tick.ogg" type="audio/ogg">
@@ -37,10 +28,20 @@
       </div>
       <article class="settings modal-hide" id="settingsModal">
         <div class="settings__wrapper">
+          <div class="languages">
+            <ul class="languages__list">
+              <li class="languages__item">
+                <button class="languages__button" disabled>UA</button>
+              </li>
+              <li class="languages__item">
+                <button class="languages__button">ENG</button>
+              </li>
+            </ul>
+          </div>
           <form action="" class="settings__form" id="settingsForm">
 
             <div class="settings__field">
-              <label class="settings__label" for="stepTime">Step time</label>
+              <label class="settings__label" for="stepTime" id="stepTimeLabel">Step time</label>
               <div class="input-number settings__input-number" id="stepTime">
                 <button class="input-number__decrement-button" type="button">-</button>
                 <input class="input-number__input" id="stepTimeInput" type="number" max="99" min="0"/>
@@ -49,7 +50,7 @@
             </div>
 
             <div class="settings__field">
-              <label class="settings__label" for="breakTime">Break time</label>
+              <label class="settings__label" for="breakTime" id="breakTimeLabel">Break time</label>
               <div class="input-number settings__input-number" id="breakTime">
                 <button class="input-number__decrement-button" type="button">-</button>
                 <input class="input-number__input" id="breakTimeInput" type="number" max="99" min="0"/>
@@ -58,7 +59,7 @@
             </div>
 
             <div class="settings__field">
-              <label class="settings__label" for="bigBreakTime">Big break time</label>
+              <label class="settings__label" for="bigBreakTime" id="bigBreakTimeLabel">Big break time</label>
               <div class="input-number settings__input-number" id="bigBreakTime">
                 <button class="input-number__decrement-button" type="button">-</button>
                 <input class="input-number__input" id="bigBreakTimeInput" type="number" max="99" min="0"/>
@@ -67,7 +68,7 @@
             </div>
 
             <div class="settings__field">
-              <label class="settings__label" for="stepsRoundCount">Steps round count</label>
+              <label class="settings__label" for="stepsRoundCount" id="stepsRoundCountLabel">Steps round count</label>
               <div class="input-number settings__input-number" id="stepsRoundCount">
                 <button class="input-number__decrement-button" type="button">-</button>
                 <input class="input-number__input" id="stepsRoundCountInput" type="number" max="99" min="0"/>
@@ -76,7 +77,7 @@
             </div>
 
             <div class="settings__field">
-              <label class="settings__label" for="stepsDayCount">Steps day count</label>
+              <label class="settings__label" for="stepsDayCount" id="stepsDayCountLabel">Steps day count</label>
               <div class="input-number settings__input-number" id="stepsDayCount">
                 <button class="input-number__decrement-button" type="button">-</button>
                 <input class="input-number__input" id="stepsDayCountInput" type="number" max="99" min="0"/>
@@ -86,17 +87,17 @@
 
             <div class="settings__field input-checkbox">
               <input class="input-checkbox__input" type="checkbox" name="soundNotification" id="soundNotification"/>
-              <label class="settings__label input-checkbox__label" for="soundNotification">Sound notification</label>
+              <label class="settings__label input-checkbox__label" for="soundNotification" id="soundNotificationLabel">Sound notification</label>
             </div>
 
             <div class="settings__field input-checkbox">
               <input class="input-checkbox__input" type="checkbox" name="soundTick" id="soundTick"/>
-              <label class="settings__label input-checkbox__label" for="soundTick">Sound tick</label>
+              <label class="settings__label input-checkbox__label" for="soundTick" id="soundTickLabel">Sound tick</label>
             </div>
 
             <div class="settings__field input-checkbox">
               <input class="input-checkbox__input" type="checkbox" name="notification" id="notification"/>
-              <label class="settings__label input-checkbox__label" for="notification">Notification</label>
+              <label class="settings__label input-checkbox__label" for="notification" id="notificationLabel">Notification</label>
             </div>
 
           </form>

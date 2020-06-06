@@ -1,6 +1,6 @@
 .control-timer-button {
-  width: 232px;
-  height: 232px;
+  width: 156px;
+  height: 156px;
   margin: 0;
   padding: 0;
   font-size: 0;
@@ -33,5 +33,12 @@
   &:hover,
   &:focus {
     background-image: url("../img/icon-pause-hover.svg");
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .control-timer-button {
+    width: 232px;
+    height: 232px;
   }
 }

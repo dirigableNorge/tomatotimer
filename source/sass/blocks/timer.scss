@@ -4,19 +4,13 @@
     padding: 0;
 
     font-weight: 700;
-    font-size: 90px;
+    font-size: 80px;
     text-align: center;
 }
 
 @media (min-width: $tablet-width) {
-    .timer {
-        font-size: 120px;
-    }
+  .timer {
+    font-size: 216px;
+    line-height: 216px;
 }
-
-@media (min-width: $desktop-width) {
-    .timer {
-        font-size: 216px;
-        line-height: 216px;
-    }
 }

@@ -1,12 +1,28 @@
 .counter {
-  width: 80px;
-  height: 80px;
+  width: 37px;
+  height: 37px;
   font-weight: 500;
-  font-size: 36px;
-  line-height: 80px;
+  font-size: 20px;
+  line-height: 37px;
   text-align: center;
 
   background-image: url("../img/counter.svg");
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
+}
+
+
+@media (min-width: $tablet-width) {
+  .counter {
+    width: 80px;
+    height: 80px;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 80px;
+    text-align: center;
+
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 }

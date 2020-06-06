@@ -1,7 +1,7 @@
 .languages {
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 12px;
+  right: 10px;
 }
 
 .languages__list {
@@ -46,4 +46,12 @@
 .languages__button:disabled {
   font-weight: 500;
   cursor: initial;
+}
+
+@media(min-width: $tablet-width) {
+  .languages {
+    position: absolute;
+    top: -60px;
+    right: 30px;
+  }
 }
