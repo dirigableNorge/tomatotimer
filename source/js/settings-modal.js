@@ -27,11 +27,19 @@ export default class SettingsModal {
 
   show() {
     this.element.classList.remove('modal-hide');
+    document.addEventListener('keydown', this.onEscDown.bind(this));
   };
 
   hide() {
     this.element.classList.add('modal-hide');
+    document.removeEventListener('keydown', this.onEscDown);
   };
+
+  onEscDown(evt) {
+    if (evt.code === 'Escape') {
+      this.hide();
+    }
+  }
 
   change(evt) {
     const newSettings = {
