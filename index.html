@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Tomato timer</title>
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="preload" href="fonts/Ruberoid-Bold.woff2" as="font" type="font/woff2">
+    <link rel="preload" href="fonts/Ruberoid-Medium.woff2" as="font" type="font/woff2">
+    <link rel="preload" href="fonts/Ruberoid-UltraLight.woff2" as="font" type="font/woff2">
+</head>
+<body>
+    <main class="page-main">
+      <h1 class="visually-hidden page-main__title">Tomato timer</h1>
+
+      <p class="timer page-main__timer"></p>
+      <audio id="tick">
+        <source src="audio/clock-tick.ogg" type="audio/ogg">
+      </audio>
+      <audio id="action">
+        <source src="audio/action.ogg" type="audio/ogg">
+      </audio>
+      <p class="counter page-main__counter">0</p>
+      <div class="page-main__controls-set">
+        <button class="control-timer-button control-timer-button--play" id="playPauseButton">Play pause button</button>
+        <button class="skip-button" id="skipButton">Skip step</button>
+        <button class="settings-button" id="settingsButton">Settings</button>
+      </div>
+      <article class="settings modal-hide" id="settingsModal">
+        <div class="settings__wrapper">
+          <div class="languages">
+            <ul class="languages__list">
+              <li class="languages__item">
+                <button class="languages__button" id="languageUA">UA</button>
+              </li>
+              <li class="languages__item">
+                <button class="languages__button" id="languageENG">ENG</button>
+              </li>
+            </ul>
+          </div>
+          <form action="" class="settings__form" id="settingsForm">
+
+            <div class="settings__field">
+              <label class="settings__label" for="stepTime" id="stepTimeLabel">КРОК</label>
+              <div class="input-number settings__input-number" id="stepTime">
+                <button class="input-number__decrement-button" type="button">-</button>
+                <input class="input-number__input" id="stepTimeInput" type="number" max="99" min="0">
+                <button class="input-number__increment-button" type="button">+</button>
+              </div>
+            </div>
+
+            <div class="settings__field">
+              <label class="settings__label" for="breakTime" id="breakTimeLabel">ПАУЗА</label>
+              <div class="input-number settings__input-number" id="breakTime">
+                <button class="input-number__decrement-button" type="button">-</button>
+                <input class="input-number__input" id="breakTimeInput" type="number" max="99" min="0">
+                <button class="input-number__increment-button" type="button">+</button>
+              </div>
+            </div>
+
+            <div class="settings__field">
+              <label class="settings__label" for="bigBreakTime" id="bigBreakTimeLabel">ВЕЛИКА ПАУЗА</label>
+              <div class="input-number settings__input-number" id="bigBreakTime">
+                <button class="input-number__decrement-button" type="button">-</button>
+                <input class="input-number__input" id="bigBreakTimeInput" type="number" max="99" min="0">
+                <button class="input-number__increment-button" type="button">+</button>
+              </div>
+            </div>
+
+            <div class="settings__field">
+              <label class="settings__label" for="stepsRoundCount" id="stepsRoundCountLabel">КРОКІВ ДО ВЕЛИКОЇ ПАУЗИ</label>
+              <div class="input-number settings__input-number" id="stepsRoundCount">
+                <button class="input-number__decrement-button" type="button">-</button>
+                <input class="input-number__input" id="stepsRoundCountInput" type="number" max="99" min="0">
+                <button class="input-number__increment-button" type="button">+</button>
+              </div>
+            </div>
+
+            <div class="settings__field">
+              <label class="settings__label" for="stepsDayCount" id="stepsDayCountLabel">КРОКІВ ЗАПЛАНОВАНО</label>
+              <div class="input-number settings__input-number" id="stepsDayCount">
+                <button class="input-number__decrement-button" type="button">-</button>
+                <input class="input-number__input" id="stepsDayCountInput" type="number" max="99" min="0">
+                <button class="input-number__increment-button" type="button">+</button>
+              </div>
+            </div>
+
+            <div class="settings__field input-checkbox">
+              <input class="input-checkbox__input" type="checkbox" name="soundNotification" id="soundNotification">
+              <label class="settings__label input-checkbox__label" for="soundNotification" id="soundNotificationLabel">ЗВУКОВЕ СПОВІЩЕННЯ</label>
+            </div>
+
+            <div class="settings__field input-checkbox">
+              <input class="input-checkbox__input" type="checkbox" name="soundTick" id="soundTick">
+              <label class="settings__label input-checkbox__label" for="soundTick" id="soundTickLabel">ЗВУК ТАЙМЕРА</label>
+            </div>
+
+            <div class="settings__field input-checkbox">
+              <input class="input-checkbox__input" type="checkbox" name="notification" id="notification">
+              <label class="settings__label input-checkbox__label" for="notification" id="notificationLabel">СПОВІЩЕННЯ</label>
+            </div>
+
+          </form>
+          <button class="settings__close-button" type="button">Close</button>
+        </div>
+      </article>
+    </main>
+
+    <script src="js/main.min.js"></script>
+</body>
+</html>
